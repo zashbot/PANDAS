@@ -27,4 +27,4 @@ int InitVideo(Uint32 flags = SDL_DOUBLEBUF | SDL_FULLSCREEN, int s_width=640, in
     return false;
   }
   return true;
-}
+} //testing commit from visual studio
