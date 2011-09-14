@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+//Comment
+
 SDL_Surface *screen;
 
 int InitVideo(Uint32 flags = SDL_DOUBLEBUF | SDL_FULLSCREEN, int s_width=640, int s_height=480) //will be changeable later using preload dialouge, do not assume these are static values when writing code
