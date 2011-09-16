@@ -1,14 +1,14 @@
 #pragma once
-
-class entity
+#include <stack>
+class Entity
 {
-private:
+protected:
 	double pos_x, pos_y, vel_x, vel_y;
 	int height, width;
 	string image_path;
 	bool motionEnabled, landed;
 public:
-	entity(int h, int y, int img_p, bool m_e);
+	Entity(int h, int y, int img_p, bool m_e);
 	//set methods
 	void setPosition_x(double pos);
 	void setPosition_y(double pos);
@@ -28,6 +28,6 @@ public:
 	string getImagePath(){return image_path;};
 	bool isMotionEnabled(){return motionEnabled;};
 	bool isLanded(){return landed;};
-	~entity(void);
+	~Entity(void);
 };
 
