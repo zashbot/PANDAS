@@ -1,13 +1,13 @@
-#include "App.h"
+#include "coreApp.h"
 
 
-App::App()
+coreApp::coreApp()
 {
 	displaySurface = NULL;
 	isRunning = true;
 }
 
-bool App::onInit()
+bool coreApp::onInit()
 {
 	// Load SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) 
@@ -25,12 +25,12 @@ bool App::onInit()
 	return true;
 }
 
-void App::onCleanup()
+void coreApp::onCleanup()
 {
 	SDL_Quit(); //quits SDL nicely
 }
 
-int App::onExecute()
+int coreApp::onExecute()
 {
 	if(onInit() == false)
 	{
