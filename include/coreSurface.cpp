@@ -57,3 +57,12 @@ bool coreSurface::onDraw(SDL_Surface* s_destination, SDL_Surface* s_source, int 
 
 	return true;
 }
+bool coreSurface::Transparent(SDL_Surface* s_destination, int R, int G, int B)
+{
+	if(s_destination == NULL)
+	{
+		fprintf(stderr, "the transparency function was passed a NULL value");
+		return false;
+	}
+	SDL_SetColorKey(s_destination, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(s_destination->format, R, G, B));
+}

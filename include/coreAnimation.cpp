@@ -13,18 +13,18 @@ coreAnimation::coreAnimation()
 }
 void coreAnimation::onAnimate()
 {
+	currentFrame += frameInc; //increments to next frame
 	if(oldTime + frameRate > SDL_GetTicks())//if not enough time has passed
 	{
 		return;
 	}
 	oldTime = SDL_GetTicks();
-	currentFrame += frameInc; //increments to next frame
 	
 	if(oscillate) //rtfm
 	{
         if(frameInc > 0) 
 		{
-            if(currentFrame >= maxFrames - 1) 
+            if(currentFrame >= maxFrames) 
 			{
                 frameInc = -frameInc;
             }
@@ -38,8 +38,21 @@ void coreAnimation::onAnimate()
         }
     }
 	else{
-        if(currentFrame >= maxFrames - 1) {
+        if(currentFrame >= maxFrames) {
             currentFrame = 0;
         }
     }
+}
+
+void coreAnimation::setCurrentFrame(int Frame)
+{
+	currentFrame = Frame;
+}
+int coreAnimation::getCurrentFrame()
+{
+	return currentFrame;
+}
+void coreAnimation::setFrameRate(int Rate)
+{
+	frameRate = Rate;
 }
