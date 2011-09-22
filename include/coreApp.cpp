@@ -27,6 +27,7 @@ bool coreApp::onInit()
 
 void coreApp::onCleanup()
 {
+	SDL_FreeSurface(displaySurface); //frees the screen from RAM
 	SDL_Quit(); //quits SDL nicely
 }
 

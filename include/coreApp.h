@@ -1,7 +1,9 @@
 #pragma once
 #include <SDL.h>
+#include "coreEvent.h"
+#include "coreSurface.h"
 
-class coreApp 
+class coreApp : public coreEvent 
 {
 private:
 	bool isRunning;	//used to quit the main game loop
@@ -13,5 +15,6 @@ public:
 	void onEvent(SDL_Event* Event); //separated into 3 different files because they are going to be huge functions
 	void onLoop();					//
 	void onRender();				//
+	void onExit();
 	void onCleanup();
 };
