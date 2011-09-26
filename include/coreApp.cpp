@@ -16,7 +16,7 @@ bool coreApp::onInit()
 		return false;
 	}
 		
-	displaySurface = SDL_SetVideoMode(720, 480, 32, SDL_DOUBLEBUF | SDL_HWSURFACE);
+	displaySurface = SDL_SetVideoMode(WWIDTH, WHEIGHT, 32, SDL_DOUBLEBUF | SDL_HWSURFACE);
 	if (displaySurface == NULL) 
 	{
 		fprintf(stderr, "Unable to set video mode: %s\n", SDL_GetError());
@@ -27,6 +27,13 @@ bool coreApp::onInit()
 
 void coreApp::onCleanup()
 {
+	for(int i = 0; i < coreEntity::entityList.size(); i++) //cleans up all entities //ignore compiler warning here
+	{
+		if(!coreEntity::entityList[i]) continue; //skips the current iteration of the loop if the entity at that point is null for some reason. 
+
+		coreEntity::entityList[i]->onCleanup();
+	}
+	coreEntity::entityList.clear(); 
 	SDL_FreeSurface(displaySurface); //frees the screen from RAM
 	SDL_Quit(); //quits SDL nicely
 }
