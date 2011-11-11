@@ -8,4 +8,5 @@ void coreApp::onLoop() //calls onLoop on every entity in the entity list vector
 
 		coreEntity::entityList[i]->onLoop();
 	}
+	coreFPS::FPScounter.onLoop();
 }

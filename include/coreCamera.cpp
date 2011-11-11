@@ -51,7 +51,7 @@ void coreCamera::setPos(int X, int Y)
 	this->Y = Y;
 }
 
-void coreCamera::setTarget(int* X, int* Y)
+void coreCamera::setTarget(float* X, float* Y)
 {
 	targetX = X;
 	targetY = Y;

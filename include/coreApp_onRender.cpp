@@ -8,9 +8,9 @@ void coreApp::onRender()
 	Rect.w = WWIDTH;
 	Rect.h = WHEIGHT;
 
-	SDL_FillRect(displaySurface, &Rect, 0);
+	SDL_FillRect(displaySurface, &Rect, 255);
 //MAP
-	coreArea::areaControl.onRender(displaySurface, coreCamera::cameraControl.getX(), coreCamera::cameraControl.getY());
+	coreArea::areaControl.onRender(displaySurface, -coreCamera::cameraControl.getX(), -coreCamera::cameraControl.getY());
 
 //ENTITIES	
 	for(int i = 0; i < coreEntity::entityList.size(); i++)

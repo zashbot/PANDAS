@@ -15,4 +15,6 @@ public:
 
 	bool onLoad(char* File);
 	void onRender(SDL_Surface* displaySurface, int MapX, int MapY);
+
+	 coreTile* getTile(int X, int Y);
 };

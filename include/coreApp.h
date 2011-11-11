@@ -3,6 +3,7 @@
 #include "coreEvent.h"
 #include "coreSurface.h"
 #include "coreEntity.h"
+#include "corePlayer.h"
 #include "coreArea.h"
 #include "coreCamera.h"
 #include "define.h"
@@ -22,7 +23,11 @@ public:
 	void onExit();
 	void onCleanup();
 
+	//players
+
+	corePlayer Player;
 
 	//events
 	void onKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode);
+	void onKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode);
 };

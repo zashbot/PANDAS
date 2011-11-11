@@ -77,3 +77,32 @@ void coreArea::onCleanup()
 		SDL_FreeSurface(surfaceTileset);
 	mapList.clear();
 }
+
+coreMap* coreArea::getMap(int X, int Y)
+{
+	int MapWidth  = MAP_WIDTH * TILE_SIZE;
+    int MapHeight = MAP_HEIGHT * TILE_SIZE;
+ 
+    int ID = X / MapWidth;
+        ID = ID + ((Y / MapHeight) * areaSize);
+ 
+    if(ID < 0 || ID >= mapList.size()) {
+        return NULL;
+    }
+ 
+    return &mapList[ID];
+}
+
+coreTile* coreArea::getTile(int X, int Y) {
+    int MapWidth  = MAP_WIDTH * TILE_SIZE;
+    int MapHeight = MAP_HEIGHT * TILE_SIZE;
+ 
+    coreMap* map = getMap(X, Y);
+ 
+    if(map == NULL) return NULL;
+ 
+    X = X % MapWidth;
+    Y = Y % MapHeight;
+ 
+    return map->getTile(X, Y);
+}

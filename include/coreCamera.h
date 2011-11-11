@@ -17,8 +17,8 @@ public:
 private:
 	int X;
 	int Y;
-	int* targetX;
-	int* targetY;
+	float* targetX;
+	float* targetY;
 
 public:
 	int targetMode;
@@ -31,5 +31,5 @@ public:
 	int getY();
 
 	void setPos(int X, int Y);
-	void setTarget(int* X, int* Y);
+	void setTarget(float* X, float* Y);
 };

@@ -28,6 +28,18 @@ bool coreApp::onInit()
 		return false;
 		fprintf(stderr, "Unable to load map");
 	}
+	
+	if(Player.onLoad("./img/panda.bmp", 64, 64, 8, "test player") == false)
+	{
+		//error message here
+		return false;
+	}
+
+	coreEntity::entityList.push_back(&Player);
+
+	coreCamera::cameraControl.targetMode = TARGET_MODE_CENTER;
+	coreCamera::cameraControl.setTarget(&Player.X, &Player.Y);
+
 	SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 	return true;
 }
@@ -66,3 +78,4 @@ int coreApp::onExecute()
 	onCleanup();
 	return 0;
 }
+
