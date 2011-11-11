@@ -3,6 +3,8 @@
 #include "coreEvent.h"
 #include "coreSurface.h"
 #include "coreEntity.h"
+#include "coreArea.h"
+#include "coreCamera.h"
 #include "define.h"
 
 class coreApp : public coreEvent 
@@ -19,4 +21,8 @@ public:
 	void onRender();				//
 	void onExit();
 	void onCleanup();
+
+
+	//events
+	void onKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode);
 };

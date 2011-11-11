@@ -5,5 +5,5 @@
 
 #define TILE_SIZE 16
 
-#define WWIDTH 720
+#define WWIDTH 640
 #define WHEIGHT 480

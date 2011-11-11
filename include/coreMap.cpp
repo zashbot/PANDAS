@@ -9,7 +9,7 @@ bool coreMap::onLoad(char* File)
 {
 	tileList.clear();
 
-	FILE* fileHandle = fopen(File, "f"); //opens "File"
+	FILE* fileHandle = fopen(File, "r"); //opens "File"
 	if(fileHandle == NULL)
 	{
 		fprintf(stderr, "could not open ", File, ". Probably missing from directory");
@@ -27,6 +27,7 @@ bool coreMap::onLoad(char* File)
 		fscanf(fileHandle, "\n"); //new line
 	}
 	fclose(fileHandle);
+	return true;
 }
 
 void coreMap::onRender(SDL_Surface* displaySurface, int MapX, int MapY)
@@ -57,7 +58,7 @@ void coreMap::onRender(SDL_Surface* displaySurface, int MapX, int MapY)
 			int tileSetX = (tileList[ID].tileID % tilesetWidth) * TILE_SIZE; 
 			int tileSetY = (tileList[ID].tileID / tilesetWidth) * TILE_SIZE;
 
-			coreSurface::onDraw(displaySurface, surfaceTileset, tX, tY, tileSetX, tileSetY, tilesetWidth, tilesetHeight);
+			coreSurface::onDraw(displaySurface, surfaceTileset, tX, tY, tileSetX, tileSetY, TILE_SIZE, TILE_SIZE);
 			ID++;
 		}
 	}

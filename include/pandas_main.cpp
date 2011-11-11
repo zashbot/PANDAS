@@ -8,6 +8,10 @@ using namespace std;
 int main(int argc, char *argv[]) //you need these because SDL redefines main() in this way.
 {
 	//you could put some sort of debugging options menu here
-	coreSurface test;
-	return 1;
+	int exitCode = 0;
+	coreApp pandas;
+	return pandas.onExecute();
+	printf("\n");
+	system("pause");
+	return exitCode;
 } 

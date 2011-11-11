@@ -22,6 +22,13 @@ bool coreApp::onInit()
 		fprintf(stderr, "Unable to set video mode: %s\n", SDL_GetError());
 		return false;
 	}
+	
+	if(coreArea::areaControl.onLoad("./maps/1.area") == false)
+	{
+		return false;
+		fprintf(stderr, "Unable to load map");
+	}
+	SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 	return true;
 }
 
@@ -33,7 +40,8 @@ void coreApp::onCleanup()
 
 		coreEntity::entityList[i]->onCleanup();
 	}
-	coreEntity::entityList.clear(); 
+	coreEntity::entityList.clear();
+	coreArea::areaControl.onCleanup();
 	SDL_FreeSurface(displaySurface); //frees the screen from RAM
 	SDL_Quit(); //quits SDL nicely
 }
@@ -53,6 +61,7 @@ int coreApp::onExecute()
 			onEvent(&Event);
 		onLoop();
 		onRender();
+		SDL_Delay(1);
 	}
 	onCleanup();
 	return 0;

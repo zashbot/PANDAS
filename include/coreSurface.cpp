@@ -10,7 +10,7 @@ SDL_Surface* coreSurface::onLoad(char* Filename)
 	SDL_Surface* s_return; s_return = NULL;
 	if ((s_temp = SDL_LoadBMP(Filename))==NULL)
 	{
-		fprintf(stderr, "Unable to load bitmap ", Filename," because: ", SDL_GetError());
+		fprintf(stderr, "Unable to load bitmap ", Filename, ", because: ", SDL_GetError());
 		return NULL;
 	}
 	s_return = SDL_DisplayFormat(s_temp); // this is so s_return is the same format as the display surface.
