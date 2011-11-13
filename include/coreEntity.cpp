@@ -12,9 +12,10 @@ coreEntity::~coreEntity()
 	//does nothing unless entity has dynamically allocated variables
 }
 
-bool coreEntity::onLoad(char* File, int Width, int Height, int Maxframes)
-{
-	if((entSurface = coreSurface.onLoad(File)) == NULL)
-	{
-		fprintf(stderr, "Unable to initialize loading of entity's texture, reason: ", SDL_GetError());
-	}
+//bool coreEntity::onLoad(char* File, int Width, int Height, int Maxframes)
+//{
+//	if((entSurface = coreSurface::onLoad(File)) == NULL)
+//	{
+//		fprintf(stderr, "Unable to initialize loading of entity's texture, reason: ", SDL_GetError());
+//	}
+//}
