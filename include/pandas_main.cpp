@@ -14,4 +14,5 @@ int main(int argc, char *argv[]) //you need these because SDL redefines main() i
 	printf("\n");
 	system("pause");
 	return exitCode;
+	//d
 } 
