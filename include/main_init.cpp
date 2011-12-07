@@ -1,5 +1,6 @@
+
 #include <cstdlib>
-#include <SDL.h>
+#include <sdl.h>
 #include <SDL_mixer.h>
 #include <iostream>
 using namespace std;
@@ -15,7 +16,7 @@ int InitVideo(Uint32 flags = SDL_DOUBLEBUF | SDL_FULLSCREEN, int s_width=640, in
   }
   atexit(SDL_Quit); //cleans up nicely
  
-  screen = SDL_SetVideoMode(s_width, s_height, 16, flags);
+  screen = SDL_SetVideoMode(s_width, s_height, 32, flags);
   if (screen == NULL) {
     fprintf(stderr, "Unable to set video mode: %s\n", SDL_GetError());
     return false;
@@ -40,4 +41,5 @@ int main(int argc, char *argv[]) //you need these because SDL redefines main() i
 	return 1;
 }
 
-//testing commit from visual studio 
+//testing commit from visual studio
+//drew testing commits
