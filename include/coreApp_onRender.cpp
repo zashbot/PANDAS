@@ -9,6 +9,8 @@ void coreApp::onRender()
 	Rect.h = WHEIGHT;
 
 	SDL_FillRect(displaySurface, &Rect, 255);
+
+
 //MAP
 	coreArea::areaControl.onRender(displaySurface, -coreCamera::cameraControl.getX(), -coreCamera::cameraControl.getY());
 

@@ -27,8 +27,8 @@ coreEntity::coreEntity()
     accelX = 0;
     accelY = 0;
  
-    maxSpeedX = 5;
-    maxSpeedY = 5;
+    maxSpeedX = 20;
+    maxSpeedY = 40;
  
     currentFrameCol = 0;
     currentFrameRow = 0;
@@ -38,6 +38,8 @@ coreEntity::coreEntity()
  
     colWidth  = 0;
     colHeight = 0;
+
+
 }
 coreEntity::~coreEntity()
 {
@@ -83,9 +85,9 @@ void coreEntity::onLoop()
     if(speedX < -maxSpeedX) speedX = -maxSpeedX;
     if(speedY > maxSpeedY)  speedY =  maxSpeedY;
     if(speedY < -maxSpeedY) speedY = -maxSpeedY;
- 
-    onAnimate();
-    onMove(speedX, speedY);
+	
+    this -> onAnimate();
+    this -> onMove(speedX, speedY);
 }
 
 void coreEntity::onRender(SDL_Surface* displaySurface)

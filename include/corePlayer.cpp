@@ -32,7 +32,7 @@ void corePlayer::onAnimate()
 {
     if(speedX != 0) 
 	{
-        animControl.maxFrames = 8;
+        animControl.maxFrames = 4;
     }else
 	{
         animControl.maxFrames = 0;

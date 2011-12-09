@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) //you need these because SDL redefines main() i
 	//you could put some sort of debugging options menu here
 	int exitCode = 0;
 	coreApp pandas;
-	return pandas.onExecute();
+	exitCode = pandas.onExecute();
 	printf("\n");
 	system("pause");
 	return exitCode;

@@ -11,19 +11,24 @@ void coreApp::onKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode)
 	{
         case SDLK_LEFT: 
 		{
-            Player.moveLeft = true;
-            break;
-        }
+			Player.moveLeft = true;
+			break;
+		}
  
         case SDLK_RIGHT:
 		{
-            Player.moveRight = true;
-            break;
-        }
+			Player.moveRight = true;
+			break;
+		}
+
+		case SDLK_UP:
+		{
+			Player.onMove(0, -50);
+		}
  
         default: 
 		{
-        }
+		}
     }    
 }
 void coreApp::onKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode)

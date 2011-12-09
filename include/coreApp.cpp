@@ -29,11 +29,12 @@ bool coreApp::onInit()
 		fprintf(stderr, "Unable to load map");
 	}
 	
-	if(Player.onLoad("./img/panda.bmp", 64, 64, 8, "test player") == false)
+	if(Player.onLoad("./img/panda.bmp", 64, 64, 7, "test player") == false)
 	{
 		//error message here
 		return false;
 	}
+
 
 	coreEntity::entityList.push_back(&Player);
 

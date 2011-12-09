@@ -9,8 +9,10 @@ public:
 	std::vector<coreMap> mapList;
 
 private:
-	int areaSize; //will change later so that you can have a non square area
+	int areaSizeX;
+	int areaSizeY;
 	SDL_Surface* surfaceTileset;
+	SDL_Surface* mapBackground;
 
 public:
 	coreArea();

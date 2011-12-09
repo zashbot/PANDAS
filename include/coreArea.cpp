@@ -4,7 +4,8 @@ coreArea coreArea::areaControl;
 
 coreArea::coreArea()
 {
-	areaSize = 0;
+	areaSizeX = 0;
+	areaSizeY = 0;
 }
 
 bool coreArea::onLoad(char* File)
@@ -15,23 +16,38 @@ bool coreArea::onLoad(char* File)
 
 	if(fileHandle == NULL)
 	{
-		fprintf(stderr, "Failed to open area file ", File);
+		fprintf(stderr, "\nFailed to open area file ");
+		fprintf(stderr, File);
 		return false;
 	}
 	char tilesetFile[255];
-
+	
 	fscanf(fileHandle, "%s\n", tilesetFile);
 	if((surfaceTileset = coreSurface::onLoad(tilesetFile)) == false)
 	{
 		fclose(fileHandle);
-		fprintf(stderr, "Failed to load tileset image ", tilesetFile);
+		fprintf(stderr, "Failed to load tileset image ");
+		fprintf(stderr, tilesetFile);
+		return false;
+	}
+	coreSurface::Transparent(surfaceTileset, 255, 0, 255);
+	
+	char backgroundFile[255];
+	fscanf(fileHandle, "%s\n", backgroundFile);
+	if((mapBackground = coreSurface::onLoad(backgroundFile)) == false)
+	{
+		fclose(fileHandle);
+		fprintf(stderr, "Failed to load background image ");
+		fprintf(stderr, backgroundFile);
 		return false;
 	}
 
-	fscanf(fileHandle, "%d\n", &areaSize);
-	for(int X = 0; X < areaSize; X++)
+
+	fscanf(fileHandle, "%d\n", &areaSizeY);
+	fscanf(fileHandle, "%d\n", &areaSizeX);
+	for(int X = 0; X < areaSizeY; X++)
 	{
-		for(int Y = 0; Y < areaSize; Y++)
+		for(int Y = 0; Y < areaSizeX; Y++)
 		{
 			char mapFile[255];
 			fscanf(fileHandle, "%s ", mapFile);
@@ -56,17 +72,19 @@ void coreArea::onRender(SDL_Surface* displaySurface, int cameraX, int cameraY)
 	int mapWidth =  MAP_WIDTH * TILE_SIZE;
 	int mapHeight = MAP_HEIGHT * TILE_SIZE;
 
+	coreSurface::onDraw(displaySurface, mapBackground, ((cameraX/3)-300), ((cameraY/3)-300));
+
 	int firstID = -cameraX / mapWidth;
-	firstID = firstID + ((-cameraY / mapHeight) * areaSize);
+	firstID = firstID + ((-cameraY / mapHeight) * areaSizeX);
 
 	for(int i = 0; i < 4; i++)
 	{
-		int ID = firstID + ((i / 2) * areaSize) + (i % 2);
+		int ID = firstID + (((i / 2) * (areaSizeX)) + (i % 2));
 
 		if (ID < 0 || ID >= mapList.size()) continue;
 
-		int X = ((ID % areaSize) * mapWidth) + cameraX;
-		int Y = ((ID / areaSize) * mapHeight) + cameraY;
+		int X = ((ID % areaSizeX) * mapWidth) + cameraX;
+		int Y = ((ID / areaSizeX) * mapHeight) + cameraY;
 		mapList[ID].onRender(displaySurface, X, Y);
 	}
 }
@@ -84,7 +102,7 @@ coreMap* coreArea::getMap(int X, int Y)
     int MapHeight = MAP_HEIGHT * TILE_SIZE;
  
     int ID = X / MapWidth;
-        ID = ID + ((Y / MapHeight) * areaSize);
+        ID = ID + ((Y / MapHeight) * areaSizeY);
  
     if(ID < 0 || ID >= mapList.size()) {
         return NULL;

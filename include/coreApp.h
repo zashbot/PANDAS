@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <iostream>
 #include "coreEvent.h"
 #include "coreSurface.h"
 #include "coreEntity.h"

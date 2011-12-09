@@ -3,7 +3,7 @@
 coreAnimation::coreAnimation()
 {
 	currentFrame = 0;
-	frameInc = 0; 
+	frameInc = 1; 
 	
 	frameRate = 100; //10 fps
 	oldTime = 0; 
@@ -13,11 +13,12 @@ coreAnimation::coreAnimation()
 }
 void coreAnimation::onAnimate()
 {
-	currentFrame += frameInc; //increments to next frame
-	if(oldTime + frameRate > SDL_GetTicks())//if not enough time has passed
+	if(oldTime + frameRate > SDL_GetTicks()) //if not enough time has passed
 	{
 		return;
 	}
+	currentFrame += frameInc; //increments to next frame
+
 	oldTime = SDL_GetTicks();
 	
 	if(oscillate) //rtfm
