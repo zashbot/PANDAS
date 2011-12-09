@@ -2,6 +2,8 @@
 
 corePlayer::corePlayer()
 {
+	maxSpeedX = 10;
+	maxSpeedY = 20;
 }
 
 bool corePlayer::onLoad(char* File, int Width, int Height, int Maxframes, char* name)

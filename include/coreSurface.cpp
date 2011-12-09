@@ -23,7 +23,7 @@ bool coreSurface::onDraw(SDL_Surface* s_destination, SDL_Surface* s_source, int 
 {
 	if(s_destination == NULL || s_source == NULL)
 	{
-		fprintf(stderr, "Error: Draw function was passed a null value for a surface");
+		fprintf(stderr, "Error: GAME Draw function was passed a null value for a surface");
 		return false;
 	}
 	
@@ -40,7 +40,7 @@ bool coreSurface::onDraw(SDL_Surface* s_destination, SDL_Surface* s_source, int 
 {
 	if(s_destination == NULL || s_source == NULL)
 	{
-		fprintf(stderr, "Error: Draw function was passed a null value for a surface");
+		fprintf(stderr, "Error: GAME Draw function was passed a null value for a surface");
 		return false;
 	}
 	SDL_Rect destRec;
@@ -65,4 +65,5 @@ bool coreSurface::Transparent(SDL_Surface* s_destination, int R, int G, int B)
 		return false;
 	}
 	SDL_SetColorKey(s_destination, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(s_destination->format, R, G, B));
+	return true;
 }
